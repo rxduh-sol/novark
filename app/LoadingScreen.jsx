@@ -6,60 +6,86 @@ const LoadingScreen = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // 1. Hide default cursor and our custom target cursor during loading [cite: 2026-03-01]
     document.body.style.cursor = 'none';
     const customCursor = document.querySelector('.custom-cursor');
     if (customCursor) customCursor.style.display = 'none';
 
-    // 2. Functional check: ensures page is actually ready [cite: 2026-03-01]
     const handleLoad = () => {
-      // 3. 1.5-second timeout to match the animation duration for one revolution [cite: 2026-03-01]
+      // Snappy duration for the effect [cite: 2026-03-01]
       setTimeout(() => {
         setLoading(false);
-        // 4. Show cursors again [cite: 2026-03-01]
         document.body.style.cursor = 'default';
         if (customCursor) customCursor.style.display = 'block';
-        // 5. Signal to Hero that it's safe to start [cite: 2026-03-01]
         window.dispatchEvent(new Event('novark_ready'));
-      }, 1500); 
+      }, 2000); // 2 seconds total for the sequence [cite: 2026-03-01]
     };
 
     if (document.readyState === 'complete') {
         handleLoad();
     } else {
       window.addEventListener('load', handleLoad);
-      return () => {
-        window.removeEventListener('load', handleLoad);
-        document.body.style.cursor = 'default'; // Cleanup [cite: 2026-03-01]
-        if (customCursor) customCursor.style.display = 'block';
-      }
+      return () => window.removeEventListener('load', handleLoad);
     }
   }, []);
+
+  // Framer Motion Variants for sequence [cite: 2026-03-01]
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1, transition: { staggerChildren: 0.5 } },
+  };
+
+  const textVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+  };
 
   return (
     <AnimatePresence>
       {loading && (
         <motion.div
-          exit={{ opacity: 0, filter: "blur(20px)" }}
+          exit={{ opacity: 0 }}
           className="fixed inset-0 z-[9999] flex items-center justify-center bg-black"
         >
-          <motion.img 
-            src="https://i.postimg.cc/W3KmRKpM/GRU.png"
-            animate={{ 
-              opacity: [0.4, 1, 0.4], 
-              scale: [0.95, 1, 0.95],
-              // Spin 360 degrees [cite: 2026-03-01]
-              rotate: 360 
-            }}
-            transition={{ 
-              // 1.5 seconds for one revolution [cite: 2026-03-01]
-              duration: 1.5, 
-              // Loop animation [cite: 2026-03-01]
-              repeat: Infinity,
-              ease: "linear"
-            }}
-            className="w-32 h-32 object-contain"
-          />
+          <motion.div 
+            className="flex items-center gap-4 text-white"
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+          >
+            {/* SITE text [cite: 2026-03-01] */}
+            <motion.h1 
+              variants={textVariants}
+              className="text-6xl font-black uppercase relative"
+              style={{ fontFamily: 'var(--font-horizon)' }}
+            >
+              SITE
+              {/* Strikethrough effect [cite: 2026-03-01] */}
+              <motion.div 
+                initial={{ scaleX: 0 }}
+                animate={{ scaleX: 1 }}
+                transition={{ delay: 0.5, duration: 0.4 }}
+                className="absolute top-1/2 left-0 w-full h-1 bg-white origin-left"
+              />
+            </motion.h1>
+
+            {/* SORTED text [cite: 2026-03-01] */}
+            <motion.h1 
+              variants={textVariants}
+              className="text-6xl font-black uppercase"
+              style={{ fontFamily: 'var(--font-horizon2)' }}
+            >
+              SORTED
+            </motion.h1>
+
+            {/* Novark Logo Twinkle [cite: 2026-03-01] */}
+            <motion.img 
+              src="https://i.postimg.cc/W3KmRKpM/GRU.png"
+              variants={textVariants}
+              animate={{ rotate: [0, 10, -10, 0], scale: [1, 1.2, 1] }}
+              transition={{ delay: 1, duration: 0.6 }}
+              className="w-12 h-12 object-contain"
+            />
+          </motion.div>
         </motion.div>
       )}
     </AnimatePresence>
