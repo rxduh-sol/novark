@@ -45,7 +45,7 @@ export default function GlobalOperations() {
   return (
     <section className="relative w-full min-h-screen bg-transparent overflow-hidden flex items-center">
       
-      {/* 1. ANIMATED SIDEBAR METADATA */}
+
       <motion.div 
         initial={{ opacity: 0, x: -20 }}
         whileInView={{ opacity: 0.2, x: 0 }}
@@ -62,7 +62,6 @@ export default function GlobalOperations() {
         </div>
       </motion.div>
 
-      {/* 2. THE GLOBE (with subtle scaling entrance) */}
       <motion.div 
         initial={{ scale: 0.8, opacity: 0 }}
         whileInView={{ scale: 1, opacity: 1 }}
@@ -83,7 +82,7 @@ export default function GlobalOperations() {
         />
       </motion.div>
 
-      {/* 3. MAIN CONTENT */}
+
       <motion.div 
         initial="hidden"
         whileInView="show"
@@ -117,7 +116,7 @@ export default function GlobalOperations() {
             </motion.p>
           </div>
 
-          {/* KPIs with Spring Counters */}
+        
           <div className="flex gap-24">
             {[
               { label: "Node_Coverage", val: "100", unit: "%" },
@@ -141,7 +140,7 @@ export default function GlobalOperations() {
         </div>
       </motion.div>
 
-      {/* 4. SCANNING LOG STREAM */}
+
       <motion.div 
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -155,7 +154,7 @@ export default function GlobalOperations() {
         <p>&gt; status: <span className="text-white/40">{SUPPORT_FEED[activeLog].status}</span></p>
       </motion.div>
 
-      {/* CUSTOM SCANNING ANIMATION CSS */}
+ 
       <style jsx global>{`
         @keyframes scan {
           0% { top: -10px; opacity: 0; }

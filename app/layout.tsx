@@ -2,16 +2,16 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
+// UPDATED: Imported SmoothScroll component [cite: 2026-03-01]
+import SmoothScroll from "./SmoothScroll"; 
 
-// Configure Horizon 1
 const horizon = localFont({
   src: "./horizon.otf", 
   variable: "--font-horizon",
 });
 
-// ADD THIS: Configure Horizon 2
 const horizon2 = localFont({
-  src: "./horizon2.otf", // Double check if it's .otf, .ttf, or .woff
+  src: "./horizon2.otf", 
   variable: "--font-horizon2",
 });
 
@@ -46,7 +46,10 @@ export default function RootLayout({
           antialiased
         `}
       >
-        {children}
+        {/* UPDATED: Wrapped children with SmoothScroll [cite: 2026-03-01] */}
+        <SmoothScroll>
+          {children}
+        </SmoothScroll>
       </body>
     </html>
   );

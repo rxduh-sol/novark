@@ -6,12 +6,10 @@ import { motion } from 'framer-motion';
 const Navbar = () => {
   const [startAnim, setStartAnim] = useState(false);
 
-  // Font Objects (No-Fail Method)
   const horizonStyle = { fontFamily: 'var(--font-horizon), sans-serif' };
   const geistSansStyle = { fontFamily: 'var(--font-geist-sans), sans-serif' };
 
   useEffect(() => {
-    // Listen for the signal from LoadingScreen
     const trigger = () => setStartAnim(true);
     window.addEventListener('novark_ready', trigger);
     return () => window.removeEventListener('novark_ready', trigger);
@@ -37,12 +35,13 @@ const Navbar = () => {
     show: { scale: 1, opacity: 1, transition: { type: "spring", stiffness: 300, damping: 12 } }
   };
 
+  // UPDATED: Nav items fully defined [cite: 2026-03-01]
   const navItems = [
     { name: 'Home', id: '#home' },
     { name: 'About', id: '#about' },
-    { name: 'Systems', id: '#systems' },
-    { name: 'Support', id: '#support' },
-    { name: 'Contact', id: '#contact' },
+    { name: 'Services', id: '#services' },
+    { name: 'Reviews', id: '#reviews' },
+    { name: 'Contacts', id: '#contact' },
   ];
 
   const handleScroll = (e, id) => {
@@ -64,7 +63,7 @@ const Navbar = () => {
                       bg-white/[0.05] backdrop-blur-2xl 
                       border border-white/[0.08] rounded-full shadow-2xl">
         
-        {/* LOGO - Reverted to your original URL */}
+        {/* LOGO */}
         <motion.div variants={itemVariants} className="flex items-center gap-3 pl-3 group cursor-pointer">
           <div className="w-11 h-11 flex items-center justify-center rounded-full transition-transform duration-700 group-hover:rotate-[360deg] overflow-hidden">
             <img src="https://i.postimg.cc/L8xkzHW6/GRU-removebg-preview.png" alt="GRU Logo" className="w-10 h-10 object-contain" />
@@ -82,9 +81,10 @@ const Navbar = () => {
                 href={item.id}
                 onClick={(e) => handleScroll(e, item.id)}
                 style={geistSansStyle}
+                // UPDATED: Added 'cursor-target' [cite: 2026-03-01]
                 className="inline-block px-4 py-2 text-[10px] font-black text-gray-400 
                            hover:text-white hover:bg-white/10 rounded-full
-                           tracking-[0.2em] uppercase transition-all duration-300"
+                           tracking-[0.2em] uppercase transition-all duration-300 cursor-target"
               >
                 {item.name}
               </a>
@@ -98,8 +98,9 @@ const Navbar = () => {
             onClick={(e) => handleScroll(e, '#contact')}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
+            // UPDATED: Added 'cursor-target' [cite: 2026-03-01]
             className="px-8 py-2.5 rounded-full text-[10px] bg-white text-black 
-                       hover:bg-gray-200 transition-all uppercase shadow-lg font-black"
+                       hover:bg-gray-200 transition-all uppercase shadow-lg font-black cursor-target"
             style={{ ...horizonStyle, letterSpacing: '0.05em' }}
           >
             Connect

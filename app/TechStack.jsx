@@ -26,10 +26,12 @@ export default function TechStack() {
         <motion.span 
           key={tag} 
           variants={tagVariants}
-          whileHover={{ y: -5, borderColor: "rgba(16,185,129,0.5)", color: "#fff" }}
+          // UPDATED COLOR: gold hover border [cite: 2026-03-01]
+          whileHover={{ y: -5, borderColor: "rgba(212,175,55,0.5)", color: "#fff" }}
           className="text-[9px] px-3 py-1 rounded-md bg-white/5 border border-white/10 text-gray-500 font-mono flex items-center gap-2 cursor-default transition-colors"
         >
-          <div className="w-1 h-1 rounded-full bg-emerald-500 shadow-[0_0_5px_#10b981]" />
+          {/* UPDATED COLOR: gold dot [cite: 2026-03-01] */}
+          <div className="w-1 h-1 rounded-full bg-[#D4AF37] shadow-[0_0_5px_#D4AF37]" />
           {tag}
         </motion.span>
       ))}
