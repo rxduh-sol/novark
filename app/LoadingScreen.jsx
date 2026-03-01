@@ -6,18 +6,22 @@ const LoadingScreen = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    // 1. Force hide default cursor [cite: 2026-03-01]
     document.body.style.cursor = 'none';
+    
+    // 2. Hide custom cursor if it exists [cite: 2026-03-01]
     const customCursor = document.querySelector('.custom-cursor');
     if (customCursor) customCursor.style.display = 'none';
 
     const handleLoad = () => {
-      // Snappy duration for the effect [cite: 2026-03-01]
+      // 3. Total duration adjusted to 2.5s for the pause [cite: 2026-03-01]
       setTimeout(() => {
         setLoading(false);
+        // 4. Restore cursors [cite: 2026-03-01]
         document.body.style.cursor = 'default';
         if (customCursor) customCursor.style.display = 'block';
         window.dispatchEvent(new Event('novark_ready'));
-      }, 2000); // 2 seconds total for the sequence [cite: 2026-03-01]
+      }, 2500); 
     };
 
     if (document.readyState === 'complete') {
@@ -28,64 +32,54 @@ const LoadingScreen = () => {
     }
   }, []);
 
-  // Framer Motion Variants for sequence [cite: 2026-03-01]
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { staggerChildren: 0.5 } },
-  };
-
-  const textVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-  };
-
   return (
     <AnimatePresence>
       {loading && (
         <motion.div
           exit={{ opacity: 0 }}
-          className="fixed inset-0 z-[9999] flex items-center justify-center bg-black"
+          // 5. Higher z-index to ensure it covers the cursor [cite: 2026-03-01]
+          className="fixed inset-0 z-[10000] flex items-center justify-center bg-black"
         >
-          <motion.div 
-            className="flex items-center gap-4 text-white"
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
-          >
-            {/* SITE text [cite: 2026-03-01] */}
+          <div className="relative flex items-center justify-center text-white">
+            
+            {/* SITE text - fades out [cite: 2026-03-01] */}
             <motion.h1 
-              variants={textVariants}
-              className="text-6xl font-black uppercase relative"
+              initial={{ opacity: 1 }}
+              animate={{ opacity: 0 }}
+              transition={{ delay: 0.8, duration: 0.3 }} // Snappier fade [cite: 2026-03-01]
+              className="text-7xl font-black uppercase absolute"
               style={{ fontFamily: 'var(--font-horizon)' }}
             >
               SITE
-              {/* Strikethrough effect [cite: 2026-03-01] */}
+              {/* Strikethrough effect - Faster [cite: 2026-03-01] */}
               <motion.div 
                 initial={{ scaleX: 0 }}
                 animate={{ scaleX: 1 }}
-                transition={{ delay: 0.5, duration: 0.4 }}
+                transition={{ delay: 0.2, duration: 0.3 }} 
                 className="absolute top-1/2 left-0 w-full h-1 bg-white origin-left"
               />
             </motion.h1>
 
-            {/* SORTED text [cite: 2026-03-01] */}
+            {/* SORTED text - fades in [cite: 2026-03-01] */}
             <motion.h1 
-              variants={textVariants}
-              className="text-6xl font-black uppercase"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1.0, duration: 0.4 }}
+              className="text-7xl font-black uppercase"
               style={{ fontFamily: 'var(--font-horizon2)' }}
             >
               SORTED
             </motion.h1>
 
-            {/* Novark Logo Twinkle [cite: 2026-03-01] */}
+            {/* Novark Logo Twinkle - Slower [cite: 2026-03-01] */}
             <motion.img 
               src="https://i.postimg.cc/W3KmRKpM/GRU.png"
-              variants={textVariants}
-              animate={{ rotate: [0, 10, -10, 0], scale: [1, 1.2, 1] }}
-              transition={{ delay: 1, duration: 0.6 }}
-              className="w-12 h-12 object-contain"
+              initial={{ opacity: 0, scale: 0.5 }}
+              animate={{ opacity: 1, scale: 1, rotate: [0, 10, -10, 0] }}
+              transition={{ delay: 1.2, duration: 0.8 }} // Slower animation [cite: 2026-03-01]
+              className="w-16 h-16 object-contain absolute -right-24"
             />
-          </motion.div>
+          </div>
         </motion.div>
       )}
     </AnimatePresence>
