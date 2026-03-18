@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useEffect } from 'react';
 import Navbar from './Navbar'; 
+import MobileNavbar from './Mobile/MobileNavbar'; // Imported from requested directory
 import Hero from './Hero'; 
 import Background from './Background';
 import Showcase from './Showcase'; 
@@ -9,14 +10,23 @@ import Services from './Services';
 import ReviewsBento from './ReviewsBento';
 import ContactTerminal from './ContactTerminal';
 import LoadingScreen from './LoadingScreen';
-// 1. Import the new footer [cite: 2026-03-01]
 import ProFooter from './ProFooter'; 
 
 export default function BalatroBackground() {
   const [isMounted, setIsMounted] = useState(false);
+  const [isMobileDevice, setIsMobileDevice] = useState(false);
 
   useEffect(() => {
     setIsMounted(true);
+
+    // USER AGENT DETECTION: Targets actual hardware strings
+    const checkDevice = () => {
+      const userAgent = typeof window !== 'undefined' ? navigator.userAgent : '';
+      const mobileRegex = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i;
+      setIsMobileDevice(mobileRegex.test(userAgent));
+    };
+
+    checkDevice();
   }, []);
 
   return (
@@ -24,7 +34,10 @@ export default function BalatroBackground() {
       <LoadingScreen />
 
       <div className={isMounted ? "opacity-100 transition-opacity duration-1000" : "opacity-0"}>
-        <Navbar />
+        
+        {/* CONDITIONAL NAVBAR RENDERING */}
+        {isMobileDevice ? <MobileNavbar /> : <Navbar />}
+        
         <Background />
 
         {/* SECTION 1: HERO */}
@@ -50,14 +63,12 @@ export default function BalatroBackground() {
           <ReviewsBento />
         </section>
 
-        {/* SECTION 6: CONTACT - Pulling it up and reducing vertical bloat */}
+        {/* SECTION 6: CONTACT */}
         <section id="contact" className="relative z-40 w-full -mt-[20vh] pb-32 pt-10 flex flex-col items-center bg-gradient-to-t from-black via-black/95 to-transparent">
           <ContactTerminal />
-          
-          {/* OLD STAMP REMOVED [cite: 2026-03-01] */}
         </section>
 
-        {/* SECTION 7: PRO FOOTER [cite: 2026-03-01] */}
+        {/* SECTION 7: PRO FOOTER */}
         <ProFooter />
       </div>
     </main>

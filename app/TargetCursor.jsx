@@ -20,9 +20,10 @@ const TargetCursor = ({
   const activeStrengthRef = useRef(0);
   const [mounted, setMounted] = useState(false);
   
-  // FIX: Store the currently hovered DOM element [cite: 2026-03-01]
+  // Store the currently hovered DOM element
   const activeTargetRef = useRef(null); 
 
+  // --- ADDED: Mobile Detection [cite: 2026-03-01] ---
   const isMobile = useMemo(() => {
     if (typeof window === 'undefined') return false;
     const hasTouchScreen = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
@@ -57,6 +58,7 @@ const TargetCursor = ({
   }, []);
 
   useEffect(() => {
+    // --- UPDATED: Early exit if mobile [cite: 2026-03-01] ---
     if (isMobile || !cursorRef.current || !mounted) return;
 
     const originalCursor = document.body.style.cursor;
@@ -96,7 +98,7 @@ const TargetCursor = ({
 
     createSpinTimeline();
 
-    // FIX: Enhanced ticker to update positions of corners based on moving element [cite: 2026-03-01]
+    // Enhanced ticker to update positions of corners based on moving element
     const tickerFn = () => {
       if (!cursorRef.current || !cornersRef.current) return;
 
@@ -198,7 +200,7 @@ const TargetCursor = ({
         resumeTimeout = null;
       }
 
-      // FIX: Set the active target reference [cite: 2026-03-01]
+      // Set the active target reference
       activeTargetRef.current = target;
       
       const corners = Array.from(cornersRef.current);
@@ -311,6 +313,7 @@ const TargetCursor = ({
     }
   }, [spinDuration, isMobile]);
 
+  // --- UPDATED: Return null on mobile [cite: 2026-03-01] ---
   if (isMobile || !mounted) {
     return null;
   }

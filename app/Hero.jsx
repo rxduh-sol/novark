@@ -6,10 +6,13 @@ const services = ["Websites", "Interfaces", "Experiences", "Systems"];
 
 export default function Hero() {
   const [index, setIndex] = useState(0);
-  const [startAnim, setStartAnim] = useState(false); // Armed but not fired
+  const [startAnim, setStartAnim] = useState(false);
+  
+  // --- DEBUG SLIDER STATE ---
+  // Change this default value once you find your "perfect" spot
+  const [topPos, setTopPos] = useState(120);
 
   useEffect(() => {
-    // Listen for the signal from LoadingScreen
     const trigger = () => setStartAnim(true);
     window.addEventListener('novark_ready', trigger);
 
@@ -45,103 +48,126 @@ export default function Hero() {
   };
 
   return (
-    <motion.div 
-      variants={containerVariants}
-      initial="hidden"
-      animate={startAnim ? "show" : "hidden"} // Starts ONLY after loading
-      className="relative z-10 text-center flex flex-col items-center justify-center px-4 h-screen"
-    >
-      
-      {/* MAIN TITLE - Staggered Letter Jump */}
-      <div className="flex mb-4">
-        {titleLetters.map((letter, i) => (
-          <motion.h1 
-            key={i}
-            variants={letterVariants}
-            className="text-white text-8xl md:text-9xl font-normal tracking-tighter leading-none" 
-            style={{ fontFamily: 'var(--font-horizon)' }}
-          >
-            {letter}
-          </motion.h1>
-        ))}
+    <>
+      {/* --- DEBUG SLIDER (Mobile Only) --- */}
+      <div className="fixed bottom-10 left-1/2 -translate-x-1/2 z-[100] flex flex-col items-center gap-2 md:hidden bg-black/60 backdrop-blur-xl p-4 rounded-3xl border border-white/10 shadow-2xl">
+        <input 
+          type="range" 
+          min="0" 
+          max="500" 
+          value={topPos} 
+          onChange={(e) => setTopPos(parseInt(e.target.value))}
+          className="w-32 accent-white cursor-pointer h-1 bg-white/20 rounded-lg appearance-none"
+        />
+        <span className="text-[10px] text-white/50 font-mono tracking-widest uppercase">
+          Pos: {topPos}px
+        </span>
       </div>
 
-      {/* FLOWY DYNAMIC SUBTITLE */}
       <motion.div 
-        variants={{
-          hidden: { opacity: 0, x: -10 },
-          show: { opacity: 1, x: 0 }
+        variants={containerVariants}
+        initial="hidden"
+        animate={startAnim ? "show" : "hidden"}
+        // Inline style overrides the Tailwind pt-24 dynamically on mobile
+        className="relative z-10 text-center flex flex-col items-center justify-start md:justify-center px-4 md:pt-0 min-h-screen"
+        style={{ 
+          paddingTop: typeof window !== 'undefined' && window.innerWidth < 768 
+            ? `${topPos}px` 
+            : 'unset' 
         }}
-        transition={{ duration: 0.6 }}
-        className="flex flex-col items-center"
       >
-        <h2 className="text-white flex items-center gap-4">
-          <span 
-            className="opacity-40 uppercase tracking-[0.3em] text-lg md:text-2xl font-light"
-            style={{ fontFamily: 'var(--font-geist-sans)' }}
-          >
-            We build
-          </span>
-          
-          <motion.span layout className="relative inline-block text-left">
-            <AnimatePresence mode="wait">
-              <motion.span
-                key={services[index]}
-                initial={{ opacity: 0, x: 15, skewX: 20, filter: "blur(8px)" }}
-                animate={{ opacity: 1, x: 0, skewX: 0, filter: "blur(0px)" }}
-                exit={{ opacity: 0, x: -15, skewX: -20, filter: "blur(8px)" }}
-                transition={{ type: "spring", stiffness: 120, damping: 14 }}
-                className="block font-bold text-white italic text-xl md:text-3xl"
-                style={{ fontFamily: 'var(--font-horizon2)' }}
-              >
-                {services[index]}
-              </motion.span>
-            </AnimatePresence>
+        
+        {/* MAIN TITLE - Staggered Letter Jump */}
+        <div className="flex mb-4 md:mb-6">
+          {titleLetters.map((letter, i) => (
+            <motion.h1 
+              key={i}
+              variants={letterVariants}
+              className="text-white text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-normal tracking-[-0.02em] md:tracking-tighter leading-none" 
+              style={{ fontFamily: 'var(--font-horizon)' }}
+            >
+              {letter}
+            </motion.h1>
+          ))}
+        </div>
 
-            <span className="invisible block font-bold italic h-0 overflow-hidden text-xl md:text-3xl" style={{ fontFamily: 'var(--font-horizon2)' }}>
-              {services[index]}
+        {/* FLOWY DYNAMIC SUBTITLE */}
+        <motion.div 
+          variants={{
+            hidden: { opacity: 0, x: -10 },
+            show: { opacity: 1, x: 0 }
+          }}
+          transition={{ duration: 0.6 }}
+          className="flex flex-col items-center gap-2 sm:gap-4"
+        >
+          <h2 className="text-white flex items-center gap-4">
+            <span 
+              className="opacity-40 uppercase tracking-[0.3em] text-base md:text-2xl font-light"
+              style={{ fontFamily: 'var(--font-geist-sans)' }}
+            >
+              We build
             </span>
             
-            <motion.div 
-              layout
-              className="absolute -bottom-1 left-0 w-full"
-              transition={{ type: "spring", stiffness: 200, damping: 25 }}
-            >
-              <div className="h-[1px] w-full bg-gradient-to-r from-transparent via-white/80 to-transparent" />
-              <div className="absolute top-0 left-0 h-[1px] w-full bg-white blur-[2px] opacity-40" />
-            </motion.div>
-          </motion.span>
-        </h2>
-      </motion.div>
+            <motion.span layout className="relative inline-block text-left">
+              <AnimatePresence mode="wait">
+                <motion.span
+                  key={services[index]}
+                  initial={{ opacity: 0, x: 15, skewX: 20, filter: "blur(8px)" }}
+                  animate={{ opacity: 1, x: 0, skewX: 0, filter: "blur(0px)" }}
+                  exit={{ opacity: 0, x: -15, skewX: -20, filter: "blur(8px)" }}
+                  transition={{ type: "spring", stiffness: 120, damping: 14 }}
+                  className="block font-bold text-white italic text-lg md:text-3xl"
+                  style={{ fontFamily: 'var(--font-horizon2)' }}
+                >
+                  {services[index]}
+                </motion.span>
+              </AnimatePresence>
 
-      {/* REFINED DESCRIPTION FOOTER */}
-      <motion.div 
-        variants={{
-          hidden: { opacity: 0, y: 20 },
-          show: { opacity: 1, y: 0 }
-        }}
-        transition={{ duration: 0.8 }}
-        className="mt-8 flex flex-col items-center max-w-[550px]"
-      >
-        <p className="text-white font-sans font-medium tracking-[0.05em] text-[11px] md:text-xs opacity-40 leading-relaxed uppercase">
-          Beautifully designed digital products built with <span className="text-white opacity-100">cutting-edge tech</span>. 
-          Bridging the gap between engineering and aesthetics.
-        </p>
-        
-        <div className="flex items-center gap-2 mt-3 opacity-20">
-          <motion.div 
-            variants={{ hidden: { width: 0 }, show: { width: 12 } }}
-            className="h-[1px] bg-white" 
-          />
-          <p className="text-white font-sans font-bold uppercase tracking-[0.4em] text-[8px]">
-            Based in Colchester, UK
+              <span className="invisible block font-bold italic h-0 overflow-hidden text-lg md:text-3xl" style={{ fontFamily: 'var(--font-horizon2)' }}>
+                {services[index]}
+              </span>
+              
+              <motion.div 
+                layout
+                className="absolute -bottom-1 left-0 w-full"
+                transition={{ type: "spring", stiffness: 200, damping: 25 }}
+              >
+                <div className="h-[1px] w-full bg-gradient-to-r from-transparent via-white/80 to-transparent" />
+                <div className="absolute top-0 left-0 h-[1px] w-full bg-white blur-[2px] opacity-40" />
+              </motion.div>
+            </motion.span>
+          </h2>
+        </motion.div>
+
+        {/* REFINED DESCRIPTION FOOTER */}
+        <motion.div 
+          variants={{
+            hidden: { opacity: 0, y: 20 },
+            show: { opacity: 1, y: 0 }
+          }}
+          transition={{ duration: 0.8 }}
+          className="mt-8 md:mt-12 flex flex-col items-center max-w-[550px] w-full"
+        >
+          <p className="text-white font-sans font-medium tracking-[0.05em] text-[10px] md:text-xs opacity-40 leading-relaxed uppercase px-6 sm:px-0">
+            Beautifully designed digital products built with <span className="text-white opacity-100">cutting-edge tech</span>. 
+            Bridging the gap between engineering and aesthetics.
           </p>
-          <motion.div 
-            variants={{ hidden: { width: 0 }, show: { width: 12 } }}
-            className="h-[1px] bg-white" 
-          />
-        </div>
+          
+          <div className="flex items-center gap-2 mt-4 opacity-20">
+            <motion.div 
+              variants={{ hidden: { width: 0 }, show: { width: 12 } }}
+              className="h-[1px] bg-white" 
+            />
+            <p className="text-white font-sans font-bold uppercase tracking-[0.4em] text-[8px]">
+              Based in Colchester, UK
+            </p>
+            <motion.div 
+              variants={{ hidden: { width: 0 }, show: { width: 12 } }}
+              className="h-[1px] bg-white" 
+            />
+          </div>
+        </motion.div>
       </motion.div>
-    </motion.div>
+    </>
   );
 }

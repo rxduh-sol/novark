@@ -43,7 +43,7 @@ export default function ProFooter() {
             NOVARK
           </h2>
           <p className="text-xs uppercase tracking-widest text-white/30">
-            SYSTEM ARCHITECTURE & DESIGN
+            WEBSITE DESIGN AND DEPLOYMENT
           </p>
           <div className="flex gap-6 pt-6">
             {socialLinks.map((social, index) => (
