@@ -1,106 +1,187 @@
 "use client";
 import React, { useRef } from 'react';
-import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
-import TargetCursor from './TargetCursor';
+import { motion, useInView } from 'framer-motion';
 
 const services = [
   {
-    title: "Local Reputation",
-    description: "We make you the #1 choice in your area. We build high-end websites that show customers you're a pro before they even call for a quote.",
     icon: "01",
-    start: { x: -150, rotate: -25, rotateY: -45 }
+    title: "A WEBSITE THAT GETS YOU MORE CALLS",
+    description: "A clean, mobile-friendly website designed to turn visitors into real enquiries.",
+    bullets: [
+      "One-tap calling for mobile users",
+      "Fast loading on all devices",
+      "Built to guide customers to contact you"
+    ]
   },
   {
-    title: "More Enquiries",
-    description: "Built to turn visitors into leads. We use clear layouts and fast booking buttons so your phone stays ringing with the right customers.",
     icon: "02",
-    start: { x: 0, rotate: 0, rotateY: 0 }
+    title: "HELP CUSTOMERS FIND YOU LOCALLY",
+    description: "Make sure people in your area can easily find your business when they search.",
+    bullets: [
+      "Shows up for local searches",
+      "Google Maps setup on site",
+      "Pages focused on your service and area"
+    ]
   },
   {
-    title: "The Full Package",
-    description: "From your domain name to professional emails—we handle the tech side entirely so you can stay focused on the job. No stress, just results.",
     icon: "03",
-    start: { x: 150, rotate: 25, rotateY: 45 }
+    title: "WE HANDLE EVERYTHING FOR YOU",
+    description: "No tech stress. We take care of everything so you can focus on your work.",
+    bullets: [
+      "Domain and hosting included",
+      "Setup and launch handled",
+      "Ongoing updates if needed"
+    ]
   }
 ];
 
 export default function Services() {
   const containerRef = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "center center"]
-  });
+  const isInView = useInView(containerRef, { once: true, margin: "-100px" });
 
-  const smoothProgress = useSpring(scrollYProgress, {
-    stiffness: 100,
-    damping: 20,
-    restDelta: 0.001
-  });
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: { 
+        staggerChildren: 0.1,
+        delayChildren: 0.1
+      }
+    }
+  };
+
+  const cardVariants = {
+    hidden: { opacity: 0, y: 100, scale: 0.9 },
+    show: { 
+      opacity: 1, 
+      y: 0,
+      scale: 1,
+      transition: { 
+        type: "spring", 
+        stiffness: 300, 
+        damping: 18,
+        mass: 1.2
+      }
+    }
+  };
 
   return (
-    // Lowered min-height and padding to keep cards visible without scrolling too much
-    <section ref={containerRef} id="services" className="relative z-30 min-h-[100vh] py-16 bg-transparent overflow-hidden">
-      <TargetCursor targetSelector=".cursor-target" />
+    <section ref={containerRef} id="services" className="relative z-30 min-h-[100vh] py-24 bg-transparent flex flex-col justify-center mt-8 lg:mt-12">
+      
+      {/* Background Map snippet - Optimized Performance Reveal */}
+      <motion.div 
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 0.25 }}
+        transition={{ duration: 1.2, ease: "easeOut", delay: 0.2 }}
+        className="absolute inset-0 z-0 pointer-events-none will-change-transform scale-[1.6] lg:scale-100 top-[-5%] lg:top-0 blur-[2px] lg:blur-none" 
+        style={{
+          backgroundImage: "url('/images/colchester_map.png')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          WebkitMaskImage: "radial-gradient(ellipse at center, black 25%, transparent 75%)",
+          maskImage: "radial-gradient(ellipse at center, black 25%, transparent 75%)"
+        }} 
+      />
 
-      <div className="max-w-7xl mx-auto px-6">
-        {/* Significantly reduced margin-bottom to pull cards up */}
-        <div className="mb-8 text-center relative">
+      <div className="w-full max-w-[1720px] mx-auto px-6 md:px-12 lg:px-16 relative z-10">
+        
+        {/* Title */}
+        <div className="mb-14 md:mb-10 text-center flex flex-col items-center pt-8 xl:pt-[4vh]">
           <motion.h2 
-            style={{ 
-              opacity: useTransform(smoothProgress, [0, 0.5], [0, 1]),
-              fontFamily: 'var(--font-horizon)' 
-            }}
-            className="text-white text-7xl md:text-9xl font-bold mb-2 tracking-tighter"
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            transition={{ duration: 0.6 }}
+            className="px-6 lg:px-0 text-white text-[clamp(2.5rem,5.5vw,7.5rem)] font-horizon uppercase font-bold tracking-tight mb-10 lg:mb-[60px] text-shadow-xl"
           >
             SERVICES
           </motion.h2>
-          
-          <p className="text-white/40 uppercase tracking-[0.6em] text-sm font-medium">Quality Design // Local Business Growth</p>
+
+          {/* Social Proof Strip */}
+          <motion.div 
+            initial={{ opacity: 0, y: 10 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="inline-flex flex-row items-center gap-2 sm:gap-4 px-4 sm:px-8 py-3 rounded-full border border-white/10 bg-black/40 backdrop-blur-xl shadow-2xl mx-1"
+          >
+            <span className="text-emerald-400 text-base sm:text-xl shrink-0">📍</span>
+            <span className="text-white/80 font-sans text-[10px] sm:text-[13px] uppercase tracking-[0.15em] sm:tracking-[0.2em] font-semibold pt-[2px] text-left">
+              Helping businesses in Stanway, Lexden & The High Street
+            </span>
+          </motion.div>
         </div>
 
-        {/* Tightened container height to keep cards centered and high */}
-        <div className="relative flex justify-center items-center h-[500px] perspective-1000">
-          {services.map((service, i) => {
-            const x = useTransform(smoothProgress, [0, 1], [service.start.x, 0]);
-            // Cards now start only 20px below their home instead of 100px
-            const y = useTransform(smoothProgress, [0, 1], [20, 0]); 
-            const rotate = useTransform(smoothProgress, [0, 1], [service.start.rotate, 0]);
-            const rotateY = useTransform(smoothProgress, [0, 1], [service.start.rotateY, 0]);
-            const scale = useTransform(smoothProgress, [0, 1], [0.95, 1]);
-
-            return (
-              <motion.div
-                key={i}
-                style={{ x, y, rotate, rotateY, scale, zIndex: i === 1 ? 40 : 30 }}
-                animate={{ scale: 1, y: 0 }} 
-                whileHover={{ 
-                  scale: 1.05, 
-                  y: -15, // Light jiggle upward
-                  transition: { type: "spring", stiffness: 400, damping: 10 } 
-                }}
-                transition={{ type: "spring", stiffness: 200, damping: 20 }}
-                className="cursor-target absolute w-full max-w-[400px] md:relative md:mx-6"
-              >
-                <div className="group relative p-10 h-[500px] rounded-3xl bg-zinc-900/90 border border-white/10 backdrop-blur-3xl transition-all duration-500 hover:border-white/40 shadow-2xl shadow-black/90">
-                  
-                  <div className="text-white/20 text-2xl mb-10 group-hover:text-white/80 transition-colors" style={{ fontFamily: 'var(--font-horizon)' }}>
-                    {service.icon}
+        {/* Cards Grid */}
+        <motion.div 
+          variants={containerVariants}
+          initial="hidden"
+          animate={isInView ? "show" : "hidden"}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 xl:gap-10"
+        >
+          {services.map((service, i) => (
+            <motion.div
+              key={i}
+              variants={cardVariants}
+              whileHover={{ 
+                scale: 1.02, 
+                y: -10,
+                transition: { type: "spring", stiffness: 400, damping: 15 } 
+              }}
+              className="relative p-6 md:p-8 lg:p-[clamp(2rem,3vw,3rem)] h-auto lg:h-[clamp(420px,55vh,520px)] rounded-[2rem] bg-zinc-900/60 border border-white/10 backdrop-blur-md group shadow-[0_20px_40px_rgba(0,0,0,0.4)] transition-all hover:bg-zinc-900/90 hover:border-white/20 hover:shadow-[0_30px_60px_rgba(0,0,0,0.6)] flex flex-col"
+            >
+              {/* Floating Stat Badges Attached directly to Card Edges */}
+              {i === 0 && (
+                <div className="absolute -top-8 -left-4 md:-left-8 lg:-left-12 flex items-center gap-4 bg-zinc-800/90 backdrop-blur-xl border border-white/10 p-4 lg:p-5 rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.5)] z-20 hover:scale-105 transition-transform">
+                  <div className="w-10 h-10 lg:w-12 lg:h-12 rounded-full bg-emerald-500/20 flex items-center justify-center text-emerald-400 font-bold text-lg lg:text-xl">↑</div>
+                  <div className="flex flex-col">
+                    <span className="text-white text-xl lg:text-2xl font-bold font-sans leading-none">70%</span>
+                    <span className="text-white/50 text-[9px] lg:text-[10px] uppercase font-sans tracking-wider mt-1">Avg. Call Increase</span>
                   </div>
-
-                  <h3 className="text-white text-4xl mb-6 font-bold tracking-tight leading-none" style={{ fontFamily: 'var(--font-geist-sans)' }}>
-                    {service.title}
-                  </h3>
-                  
-                  <p className="text-white/50 text-lg leading-relaxed group-hover:text-white/80 transition-colors">
-                    {service.description}
-                  </p>
-
-                  <div className="absolute bottom-10 right-10 w-16 h-16 border-r-2 border-b-2 border-white/5 group-hover:border-white/60 transition-all duration-500" />
                 </div>
-              </motion.div>
-            );
-          })}
-        </div>
+              )}
+
+              {i === 2 && (
+                <div className="absolute -top-8 -right-4 md:-right-8 lg:-right-12 flex items-center gap-4 bg-zinc-800/90 backdrop-blur-xl border border-white/10 p-4 lg:p-5 rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.5)] z-20 hover:scale-105 transition-transform">
+                  <div className="w-10 h-10 lg:w-12 lg:h-12 rounded-full bg-sky-500/20 flex items-center justify-center text-sky-400 font-bold text-lg lg:text-xl">⚡</div>
+                  <div className="flex flex-col">
+                    <div className="flex items-center gap-1.5">
+                      <span className="text-white text-xl lg:text-2xl font-bold font-sans leading-none">HIGH</span>
+                      <div className="w-4 h-4 rounded-full bg-emerald-500/20 flex items-center justify-center text-emerald-400 text-[10px] shadow-[0_0_8px_rgba(52,211,153,0.4)]">✓</div>
+                    </div>
+                    <span className="text-white/50 text-[9px] lg:text-[10px] uppercase font-sans tracking-wider mt-1">Perfect for Mobile</span>
+                  </div>
+                </div>
+              )}
+
+              {/* Number Icon */}
+              <div className="text-white/40 text-[clamp(2.5rem,4vw,3.5rem)] font-horizon font-bold mb-[clamp(1rem,2vh,2rem)] transition-colors group-hover:text-white/60">
+                {service.icon}
+              </div>
+
+              {/* Title */}
+              <h3 className="text-white text-[clamp(1.1rem,1.4vw,1.4rem)] lg:text-[1.3rem] xl:text-[1.4rem] font-horizon uppercase leading-[1.2] tracking-tight mb-[clamp(0.5rem,1.5vh,1rem)] pr-2">
+                {service.title}
+              </h3>
+              
+              {/* Description */}
+              <p className="text-white/60 font-sans text-[clamp(0.95rem,1.2vw,1.1rem)] leading-[1.65] mb-[clamp(1.5rem,4vh,3rem)] pr-2">
+                {service.description}
+              </p>
+
+              {/* Bullets */}
+              <ul className="flex flex-col gap-[clamp(1rem,2.2vh,1.5rem)] font-sans mt-auto mb-8 lg:mb-12 pr-4 lg:pr-10">
+                {service.bullets.map((bullet, idx) => (
+                  <li key={idx} className="flex items-start gap-4">
+                    <div className="w-2 h-2 mt-[12px] rounded-full bg-white/90 shrink-0 shadow-[0_0_8px_rgba(255,255,255,0.6)]" />
+                    <span className="text-white text-[clamp(1.15rem,1.4vw,1.35rem)] font-bold leading-[1.4] tracking-wide">{bullet}</span>
+                  </li>
+                ))}
+              </ul>
+
+              {/* Corner Accent */}
+              <div className="absolute bottom-6 right-6 w-10 h-10 lg:w-12 lg:h-12 border-r-[3px] border-b-[3px] border-white/10 transition-colors duration-300 group-hover:border-white/30" />
+            </motion.div>
+          ))}
+        </motion.div>
       </div>
     </section>
   );

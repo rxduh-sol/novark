@@ -1,13 +1,12 @@
 "use client";
 import React, { useState, useEffect } from 'react';
 import Navbar from './Navbar'; 
-import MobileNavbar from './Mobile/MobileNavbar'; // Imported from requested directory
 import Hero from './Hero'; 
 import Background from './Background';
-import Showcase from './Showcase'; 
+
 import TechLogoSection from './TechLogoSection'; 
 import Services from './Services'; 
-import ReviewsBento from './ReviewsBento';
+import WorkCarousel from './WorkCarousel';
 import ContactTerminal from './ContactTerminal';
 import LoadingScreen from './LoadingScreen';
 import ProFooter from './ProFooter'; 
@@ -35,36 +34,34 @@ export default function BalatroBackground() {
 
       <div className={isMounted ? "opacity-100 transition-opacity duration-1000" : "opacity-0"}>
         
-        {/* CONDITIONAL NAVBAR RENDERING */}
-        {isMobileDevice ? <MobileNavbar /> : <Navbar />}
+        <Navbar />
         
         <Background />
 
         {/* SECTION 1: HERO */}
-        <section id="home" className="relative z-10 w-full h-screen flex items-center justify-center">
+        <section id="home" className="relative z-10 w-full min-h-[100vh] flex items-center justify-center">
           <Hero />
         </section>
 
-        {/* SECTION 2: SHOWCASE */}
-        <Showcase />
+
 
         {/* SECTION 3: TECH STACK */}
-        <section className="relative z-30 -mt-[194px]">
+        {/* <section className="relative z-30 -mt-[194px]">
           <TechLogoSection />
-        </section>
+        </section> */}
 
         {/* SECTION 4: SERVICES */}
-        <section id="services" className="relative z-30 w-full -mt-[2vh]">
+        <section id="services" className="relative z-30 w-full -mt-[5vh] lg:-mt-[15vh]">
           <Services />
         </section>
 
-        {/* SECTION 5: REVIEWS BENTO */}
-        <section id="reviews" className="relative z-30 w-full py-16 -mt-[10vh]">
-          <ReviewsBento />
+        {/* SECTION 5: WORK CAROUSEL */}
+        <section id="work" className="relative z-30 w-full py-2 -mt-[5vh]">
+          <WorkCarousel />
         </section>
 
         {/* SECTION 6: CONTACT */}
-        <section id="contact" className="relative z-40 w-full -mt-[20vh] pb-32 pt-10 flex flex-col items-center bg-gradient-to-t from-black via-black/95 to-transparent">
+        <section id="contact" className="relative z-40 w-full -mt-[10vh] pb-16 pt-10 flex flex-col items-center bg-gradient-to-t from-black via-black/95 to-transparent">
           <ContactTerminal />
         </section>
 

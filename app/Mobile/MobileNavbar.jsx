@@ -35,10 +35,9 @@ const MobileNavbar = () => {
 
   const navItems = [
     { name: 'Home', id: '#home' },
-    { name: 'About', id: '#about' },
     { name: 'Services', id: '#services' },
-    { name: 'Reviews', id: '#reviews' },
-    { name: 'Contacts', id: '#contact' },
+    { name: 'Work', id: '#work' },
+    { name: 'Contact', id: '#contact' },
   ];
 
   const handleScroll = (e, id) => {

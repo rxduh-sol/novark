@@ -26,7 +26,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "NOVARK | Phase 2",
+  title: "Novark | Colchester Websites That Get More Bookings & Calls",
   description: "High-performance systems for the local web.",
 };
 
