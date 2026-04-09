@@ -30,6 +30,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Novark | Colchester Websites That Get More Bookings & Calls",
   description: "High-performance systems for the local web.",
+  icons: {
+    icon: "/images/GRU(1).webp",
+  },
 };
 
 export default function RootLayout({
@@ -43,7 +46,7 @@ export default function RootLayout({
         <script dangerouslySetInnerHTML={{ __html: `
           try {
             if(sessionStorage.getItem('novark_visited')) {
-              document.write('<style>#loading-screen-wrap { display: none !important; } .will-change-transform, .hero-content-reveal { opacity: 1 !important; transform: none !important; }</style>');
+              document.write('<style>#loading-screen-wrap { display: none !important; } .bypass-opacity, .bypass-opacity * { opacity: 1 !important; }</style>');
             }
           } catch(e) {}
         `}} />

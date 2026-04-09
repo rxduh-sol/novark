@@ -46,7 +46,7 @@ export default function Hero() {
               transition: { staggerChildren: 0.2, delayChildren: 0.2 }
             }
           }}
-          className="hidden lg:grid w-full gap-12 lg:grid-cols-[1.2fr_0.8fr] items-start will-change-transform transform-gpu"
+          className="hidden lg:grid w-full gap-12 lg:grid-cols-[1.2fr_0.8fr] items-start will-change-transform transform-gpu bypass-opacity"
         >
           {/* Left Text Column */}
           <div className="flex flex-col justify-center items-start text-left max-w-[1000px] z-10 pr-8">
@@ -205,7 +205,7 @@ export default function Hero() {
               transition: { staggerChildren: 0.2, delayChildren: 0.15 }
             }
           }}
-          className="lg:hidden flex flex-col items-start text-left w-full gap-8 transform-gpu"
+          className="lg:hidden flex flex-col items-start text-left w-full gap-8 transform-gpu bypass-opacity"
         >
           {/* [1] Headline - 4 Distinct Lines */}
           <motion.h1

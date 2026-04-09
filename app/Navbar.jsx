@@ -83,7 +83,7 @@ const Navbar = () => {
         variants={navBarVariants}
         initial="hidden"
         animate={startAnim ? "show" : "hidden"}
-        className="fixed top-0 left-0 w-full z-[100] md:px-12 lg:px-16 md:pt-4 lg:pt-8"
+        className="fixed top-0 left-0 w-full z-[100] md:px-12 lg:px-16 md:pt-4 lg:pt-8 bypass-opacity"
       >
         <div className="w-full max-w-[1920px] mx-auto">
           <div className="w-full flex items-center justify-between px-4 md:px-4 py-3 lg:py-4 lg:px-6 
