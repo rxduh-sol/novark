@@ -3,7 +3,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
 // UPDATED: Imported SmoothScroll component [cite: 2026-03-01]
-import SmoothScroll from "./SmoothScroll"; 
+import SmoothScroll from "./SmoothScroll";
+import { Analytics } from "@vercel/analytics/next"; 
 
 const horizon = localFont({
   src: "./horizon.otf", 
@@ -64,6 +65,7 @@ export default function RootLayout({
         <SmoothScroll>
           {children}
         </SmoothScroll>
+        <Analytics />
       </body>
     </html>
   );
