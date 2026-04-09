@@ -30,7 +30,7 @@ export default function ProFooter() {
           <div className="flex flex-col items-start gap-8 shrink-0">
             <div className="flex items-center gap-4">
               <div className="w-16 h-16 flex items-center justify-center rounded-full overflow-hidden bg-white/5 border border-white/10 shadow-2xl shrink-0">
-                <img src="https://i.postimg.cc/L8xkzHW6/GRU-removebg-preview.png" alt="Logo" className="w-full h-full object-contain scale-90" />
+                <img src="/images/GRU-removebg-preview(1).webp" alt="Logo" className="w-full h-full object-contain scale-90" />
               </div>
               <h2 className="text-white text-5xl font-bold tracking-tighter uppercase shrink-0"
                 style={{ fontFamily: 'var(--font-horizon), sans-serif' }}>
@@ -88,7 +88,7 @@ export default function ProFooter() {
         <div className="flex flex-col items-start gap-8 w-full">
           <div className="flex items-center gap-4 w-full">
             <div className="w-14 h-14 flex items-center justify-center rounded-full overflow-hidden bg-white/5 border border-white/10 shadow-xl shrink-0">
-              <img src="https://i.postimg.cc/L8xkzHW6/GRU-removebg-preview.png" alt="Logo" className="w-full h-full object-contain scale-90" />
+              <img src="/images/GRU-removebg-preview(1).webp" alt="Logo" className="w-full h-full object-contain scale-90" />
             </div>
             <h2 className="text-white text-[clamp(2.5rem,10vw,3.5rem)] font-bold tracking-tighter uppercase"
               style={{ fontFamily: 'var(--font-horizon), sans-serif' }}>
@@ -139,7 +139,7 @@ export default function ProFooter() {
       {/* BOTTOM SECTION: DISCLAIMER & COPYRIGHT */}
       <div className="w-full mx-auto mt-20 pt-10 border-t border-white/5 flex flex-col items-center justify-center gap-6">
         <div className="text-[10px] md:text-[12px] text-white/20 uppercase tracking-[0.2em] font-medium text-center max-w-2xl px-4 italic leading-loose">
-          Based in Abbeyfields, Colchester, Essex. All services provided by Novark Agency. We are dedicated to delivering results for local trades through performance led digital solutions.
+          Based in Abbeyfields, Colchester, Essex. All services provided by Novark Agency. We are dedicated to delivering results for local trades through performanceled digital solutions.
         </div>
         <div className="text-[14px] text-white/30 uppercase tracking-[0.5em] font-black text-center">
           © {new Date().getFullYear()} NOVARK. ALL RIGHTS RESERVED.

@@ -10,7 +10,7 @@ import ProFooter from './ProFooter';
 
 export default function Page() {
   return (
-    <main className="smooth-gpu relative w-full min-h-screen bg-transparent overflow-x-hidden scroll-smooth">
+    <main className="relative w-full min-h-screen bg-transparent overflow-x-hidden scroll-smooth">
       <LoadingScreen />
 
       <div className="opacity-100">

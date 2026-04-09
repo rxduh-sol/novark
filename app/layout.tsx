@@ -8,11 +8,13 @@ import SmoothScroll from "./SmoothScroll";
 const horizon = localFont({
   src: "./horizon.otf", 
   variable: "--font-horizon",
+  display: "swap",
 });
 
 const horizon2 = localFont({
   src: "./horizon2.otf", 
   variable: "--font-horizon2",
+  display: "swap",
 });
 
 const geistSans = Geist({
@@ -37,6 +39,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: `
+          try {
+            if(sessionStorage.getItem('novark_visited')) {
+              document.write('<style>#loading-screen-wrap { display: none !important; } .will-change-transform, .hero-content-reveal { opacity: 1 !important; transform: none !important; }</style>');
+            }
+          } catch(e) {}
+        `}} />
+      </head>
       <body
         className={`
           ${geistSans.variable} 

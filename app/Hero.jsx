@@ -184,7 +184,7 @@ export default function Hero() {
               <div className="absolute -right-[clamp(3px,0.5vw,6px)] top-[28%] w-[clamp(3px,0.5vw,5px)] h-[10%] bg-white rounded-r-md shadow-[2px_0_4px_rgba(0,0,0,0.2)]" />
               <div className="relative w-[clamp(260px,22vw,360px)] h-[clamp(560px,calc(84vh-3rem),940px)] bg-black rounded-[clamp(2rem,3vw,3.2rem)] border-[clamp(6px,0.8vw,12px)] border-black">
                 <div className="relative w-full h-full rounded-[clamp(1.5rem,2.5vw,2.5rem)] overflow-hidden bg-zinc-950">
-                   <img src="/newphoneimage.webp" className="w-full h-full object-cover absolute inset-0" alt="Mobile App Preview" />
+                   <img src="/newphoneimage.webp" className="w-full h-full object-cover absolute inset-0" alt="Mobile App Preview" fetchPriority="high" />
                 </div>
               </div>
             </div>
@@ -317,7 +317,7 @@ export default function Hero() {
               <div className="relative w-[240px] aspect-[9/18.5] bg-black rounded-[2.8rem] border-[10px] border-black overflow-hidden select-none">
                 {/* Image Content */}
                 <div className="relative w-full h-full rounded-[2.2rem] overflow-hidden bg-zinc-950">
-                  <img src="/newphoneimage.webp" className="w-full h-full object-cover" alt="Phone Showcase" />
+                  <img src="/newphoneimage.webp" className="w-full h-full object-cover" alt="Phone Showcase" fetchPriority="high" />
                   
                   {/* Dynamic Island / Notch */}
                   <div className="absolute top-0 inset-x-0 h-[18px] bg-black w-[35%] mx-auto rounded-b-[0.8rem] z-20 flex justify-center items-center gap-1.5 shadow-xl">

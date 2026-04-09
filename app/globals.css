@@ -120,6 +120,7 @@
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
   }
@@ -129,6 +130,7 @@
   .font-horizon {
     font-family: var(--font-horizon), sans-serif !important;
   }
+
   .font-horizon2 {
     font-family: var(--font-horizon2), sans-serif !important;
   }
@@ -144,12 +146,15 @@
 }
 
 /* Exclude the fixed Navbar and Loading Screens from GPU context breaking */
-nav *, #loading-screen * {
+nav *,
+#loading-screen * {
   transform: none;
   perspective: none;
 }
 
-img, video, canvas {
+img,
+video,
+canvas {
   /* Prevents the browser from trying to "smooth" images while moving, which causes lag */
   image-rendering: -webkit-optimize-contrast;
 }

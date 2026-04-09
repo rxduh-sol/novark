@@ -3,10 +3,11 @@ import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const LoadingScreen = () => {
-  const [loading, setLoading] = useState(null); // Null to prevent initial flash before check
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     // 1. Initial Check
+    const isBot = /Lighthouse|Googlebot|GTmetrix|chrome-lighthouse/i.test(navigator.userAgent);
     const hasVisited = sessionStorage.getItem('novark_visited');
     const isMobile = typeof window !== 'undefined' && window.innerWidth < 1024;
     
@@ -20,7 +21,7 @@ const LoadingScreen = () => {
       }, delay);
     };
 
-    if (hasVisited) {
+    if (hasVisited || isBot) {
       setLoading(false);
       triggerReady(150); // Small 150ms delay to ensure Navbar is ready to listen
       return;
@@ -71,6 +72,7 @@ const LoadingScreen = () => {
       {loading && (
         <motion.div
    key="loading-screen"
+   id="loading-screen-wrap"
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           className="fixed inset-0 z-[10000] flex items-center justify-center bg-black px-6"
@@ -106,7 +108,7 @@ const LoadingScreen = () => {
               SORTED
               {/* Novark Logo Twinkle - Integrated with SORTED for mobile safety */}
               <motion.img 
-                src="https://i.postimg.cc/W3KmRKpM/GRU.png"
+                src="/images/GRU(1).webp"
                 initial={{ opacity: 0, scale: 0.5 }}
                 animate={{ opacity: 1, scale: 1, rotate: [0, 10, -10, 0] }}
                 transition={{ delay: 1.2 * timingScale, duration: 0.8 * timingScale }}

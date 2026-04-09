@@ -12,6 +12,12 @@ const Navbar = () => {
   useEffect(() => {
     const trigger = () => setStartAnim(true);
     window.addEventListener('novark_ready', trigger);
+
+    // Fallback if event already fired
+    if (typeof window !== 'undefined' && window.novark_ready_fired) {
+      setStartAnim(true);
+    }
+
     return () => window.removeEventListener('novark_ready', trigger);
   }, []);
 
@@ -87,7 +93,7 @@ const Navbar = () => {
             {/* LOGO */}
             <motion.div variants={itemVariants} className="flex items-center gap-2 lg:gap-3 pl-1 lg:pl-3 group cursor-pointer shrink-0">
               <div className="w-[40px] h-[40px] lg:w-[60px] lg:h-[60px] flex items-center justify-center rounded-full transition-transform duration-700 group-hover:rotate-[360deg] overflow-hidden">
-                <img src="https://i.postimg.cc/L8xkzHW6/GRU-removebg-preview.png" alt="GRU Logo" className="w-[32px] h-[32px] lg:w-[52px] lg:h-[52px] object-contain" />
+                <img src="/images/GRU-removebg-preview(1).webp" alt="GRU Logo" className="w-[32px] h-[32px] lg:w-[52px] lg:h-[52px] object-contain" />
               </div>
               <span style={horizonStyle} className="text-white text-[15px] lg:text-[22px] pr-4 lg:pr-6 border-r border-white/10 mt-0.5">
                 NOVARK

@@ -65,7 +65,7 @@ const MobileNavbar = () => {
           {/* LOGO & BRAND */}
           <div className="flex items-center gap-2">
             <div className="w-8 h-8 flex items-center justify-center rounded-full overflow-hidden bg-white/5">
-              <img src="https://i.postimg.cc/L8xkzHW6/GRU-removebg-preview.png" alt="Logo" className="w-full h-full object-contain scale-95" />
+              <img src="/images/GRU-removebg-preview(1).webp" alt="Logo" className="w-full h-full object-contain scale-95" />
             </div>
             
             <span style={horizonStyle} className="text-white text-[12px] tracking-wider whitespace-nowrap leading-none pr-3 border-r border-white/20 mt-0.5">
