@@ -66,7 +66,7 @@ export default function Services() {
   };
 
   return (
-    <section ref={containerRef} id="services" className="relative z-30 min-h-[100vh] py-24 bg-transparent flex flex-col justify-center mt-8 lg:mt-12">
+    <section ref={containerRef} id="services" className="relative z-30 min-h-[100dvh] py-24 bg-transparent flex flex-col justify-center mt-8 lg:mt-12">
       
       {/* Background Map snippet - Optimized Performance Reveal */}
       <motion.div 
@@ -75,7 +75,7 @@ export default function Services() {
         transition={{ duration: 1.2, ease: "easeOut", delay: 0.2 }}
         className="absolute inset-0 z-0 pointer-events-none will-change-transform scale-[1.6] lg:scale-100 top-[-5%] lg:top-0 blur-[2px] lg:blur-none" 
         style={{
-          backgroundImage: "url('/images/colchester_map.png')",
+          backgroundImage: "url('/images/colchester_map.webp')",
           backgroundSize: "cover",
           backgroundPosition: "center",
           WebkitMaskImage: "radial-gradient(ellipse at center, black 25%, transparent 75%)",
@@ -101,7 +101,7 @@ export default function Services() {
             initial={{ opacity: 0, y: 10 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="inline-flex flex-row items-center gap-2 sm:gap-4 px-4 sm:px-8 py-3 rounded-full border border-white/10 bg-black/40 backdrop-blur-xl shadow-2xl mx-1"
+            className="inline-flex flex-row items-center gap-2 sm:gap-4 px-4 sm:px-8 py-3 rounded-full border border-white/10 bg-zinc-950/90 md:bg-black/40 md:backdrop-blur-xl shadow-2xl mx-1"
           >
             <span className="text-emerald-400 text-base sm:text-xl shrink-0">📍</span>
             <span className="text-white/80 font-sans text-[10px] sm:text-[13px] uppercase tracking-[0.15em] sm:tracking-[0.2em] font-semibold pt-[2px] text-left">
@@ -126,7 +126,7 @@ export default function Services() {
                 y: -10,
                 transition: { type: "spring", stiffness: 400, damping: 15 } 
               }}
-              className="relative p-6 md:p-8 lg:p-[clamp(2rem,3vw,3rem)] h-auto lg:h-[clamp(420px,55vh,520px)] rounded-[2rem] bg-zinc-900/60 border border-white/10 backdrop-blur-md group shadow-[0_20px_40px_rgba(0,0,0,0.4)] transition-all hover:bg-zinc-900/90 hover:border-white/20 hover:shadow-[0_30px_60px_rgba(0,0,0,0.6)] flex flex-col"
+              className="relative p-6 md:p-8 lg:p-[clamp(2rem,3vw,3rem)] h-auto lg:h-[clamp(420px,55vh,520px)] rounded-[2rem] bg-zinc-900 md:bg-zinc-900/60 border border-white/10 md:backdrop-blur-md group shadow-[0_20px_40px_rgba(0,0,0,0.4)] transition-all flex flex-col"
             >
               {/* Floating Stat Badges Attached directly to Card Edges */}
               {i === 0 && (

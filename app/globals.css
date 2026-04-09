@@ -133,3 +133,23 @@
     font-family: var(--font-horizon2), sans-serif !important;
   }
 }
+
+/* S24 Ultra / Android Hardware Acceleration Fixes */
+.smooth-gpu {
+  backface-visibility: hidden;
+  perspective: 1000px;
+  transform: translate3d(0, 0, 0);
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+/* Exclude the fixed Navbar and Loading Screens from GPU context breaking */
+nav *, #loading-screen * {
+  transform: none;
+  perspective: none;
+}
+
+img, video, canvas {
+  /* Prevents the browser from trying to "smooth" images while moving, which causes lag */
+  image-rendering: -webkit-optimize-contrast;
+}

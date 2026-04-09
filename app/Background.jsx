@@ -1,3 +1,5 @@
+"use client";
+
 import MeshBackground from './MeshBackground';
 // import Balatro from './Balatro.jsx';
 

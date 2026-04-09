@@ -7,7 +7,7 @@ const works = [
     title: "PTAP - FAST MOBILE PAYMENTS",
     tag: "[FINTECH]",
     description: "Turn your phone into a card reader instantly. No extra hardware, no monthly fees.",
-    image: "/images/ptap_work.png",
+    image: "/images/ptap_work.webp",
     bullets: [
       "Get paid instantly on your phone",
       "No expensive card machines required",
@@ -18,7 +18,7 @@ const works = [
     title: "PREMIUM RETAIL STORE",
     tag: "[E-COMMERCE]",
     description: "A professional online shop built to sell clothing and accessories with ease.",
-    image: "/images/store_work.png",
+    image: "/images/store_work.webp",
     bullets: [
       "Clean, professional design",
       "Mobile-ready for customers on the go",
@@ -29,7 +29,7 @@ const works = [
     title: "CUSTOM BUSINESS DASHBOARD",
     tag: "[SOFTWARE]",
     description: "Everything your business needs to stay organized, from sales tracking to team tasks.",
-    image: "/images/dashboard_work.png",
+    image: "/images/dashboard_work.webp",
     bullets: [
       "Track your sales and revenue",
       "Keep your projects on schedule",

@@ -29,7 +29,7 @@ export default function Hero() {
 
   return (
     <section
-      className="relative z-10 w-full flex justify-center min-h-[100vh] pt-[clamp(80px,12vh,120px)] lg:pt-[clamp(100px,16vh,180px)] pb-[clamp(100px,20vh,280px)] overflow-visible"
+      className="relative z-10 w-full flex justify-center min-h-[100dvh] pt-[clamp(80px,12vh,120px)] lg:pt-[clamp(100px,16vh,180px)] pb-[clamp(100px,20vh,280px)] overflow-visible"
     >
       <div className="w-full max-w-[1920px] mx-auto px-4 md:px-12 lg:px-16 h-full mt-2 lg:mt-6">
         
@@ -100,7 +100,7 @@ export default function Hero() {
 
                 <motion.div
                   variants={{ hidden: { opacity: 0, scale: 0.8 }, visible: { opacity: 1, scale: 1, transition: { type: "spring", stiffness: 500, damping: 20, delay: 0.8 } } }}
-                  className="inline-flex items-center self-start gap-4 px-6 py-3 rounded-full border border-white/10 bg-white/5 backdrop-blur-md shadow-[0_0_20px_rgba(255,255,255,0.05)] ml-8 mt-2"
+                  className="inline-flex items-center self-start gap-4 px-6 py-3 rounded-full border border-white/10 bg-white/5 md:backdrop-blur-md shadow-[0_0_20px_rgba(255,255,255,0.05)] ml-8 mt-2"
                 >
                   <span className="text-[clamp(10px,1.1vw,13px)] font-sans text-white/50 tracking-[0.16em] uppercase font-semibold whitespace-nowrap">
                     Trusted By Local Businesses In Colchester
@@ -184,7 +184,7 @@ export default function Hero() {
               <div className="absolute -right-[clamp(3px,0.5vw,6px)] top-[28%] w-[clamp(3px,0.5vw,5px)] h-[10%] bg-white rounded-r-md shadow-[2px_0_4px_rgba(0,0,0,0.2)]" />
               <div className="relative w-[clamp(260px,22vw,360px)] h-[clamp(560px,calc(84vh-3rem),940px)] bg-black rounded-[clamp(2rem,3vw,3.2rem)] border-[clamp(6px,0.8vw,12px)] border-black">
                 <div className="relative w-full h-full rounded-[clamp(1.5rem,2.5vw,2.5rem)] overflow-hidden bg-zinc-950">
-                   <img src="/newphoneimage.png" className="w-full h-full object-cover absolute inset-0" alt="Mobile App Preview" />
+                   <img src="/newphoneimage.webp" className="w-full h-full object-cover absolute inset-0" alt="Mobile App Preview" />
                 </div>
               </div>
             </div>
@@ -254,9 +254,9 @@ export default function Hero() {
           {/* [2] Trusted By Pill */}
           <motion.div
             variants={{ hidden: { opacity: 0, scale: 0.9 }, visible: { opacity: 1, scale: 1, transition: { type: "spring", stiffness: 500, damping: 25, delay: 0.8 } } }}
-            className="inline-flex items-center gap-3 px-6 py-2.5 rounded-full border border-white/10 bg-white/5 backdrop-blur-md"
+            className="inline-flex items-center gap-2 px-3 py-2 rounded-full border border-white/10 bg-zinc-900/90 md:bg-white/5 md:backdrop-blur-md mx-2 sm:mx-4"
           >
-            <span className="text-[clamp(9px,3vw,11px)] font-sans text-white/60 tracking-[0.12em] uppercase font-bold whitespace-nowrap">
+            <span className="text-[10px] sm:text-[11px] font-sans text-white/60 tracking-[0.1em] uppercase font-bold whitespace-nowrap">
               📍 TRUSTED BY LOCAL BUSINESSES IN COLCHESTER
             </span>
           </motion.div>
@@ -264,7 +264,7 @@ export default function Hero() {
           {/* [3] CTA Buttons */}
           <motion.div 
             variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
-            className="flex flex-col gap-4 w-full"
+            className="flex flex-col gap-4 w-full px-4 sm:px-6"
           >
             <motion.button 
               onClick={(e) => {
@@ -317,7 +317,7 @@ export default function Hero() {
               <div className="relative w-[240px] aspect-[9/18.5] bg-black rounded-[2.8rem] border-[10px] border-black overflow-hidden select-none">
                 {/* Image Content */}
                 <div className="relative w-full h-full rounded-[2.2rem] overflow-hidden bg-zinc-950">
-                  <img src="/newphoneimage.png" className="w-full h-full object-cover" alt="Phone Showcase" />
+                  <img src="/newphoneimage.webp" className="w-full h-full object-cover" alt="Phone Showcase" />
                   
                   {/* Dynamic Island / Notch */}
                   <div className="absolute top-0 inset-x-0 h-[18px] bg-black w-[35%] mx-auto rounded-b-[0.8rem] z-20 flex justify-center items-center gap-1.5 shadow-xl">

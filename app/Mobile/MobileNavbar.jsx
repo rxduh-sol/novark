@@ -59,8 +59,8 @@ const MobileNavbar = () => {
             - max-w-[94vw]: Prevents overlap on edges by capping width relative to the screen.
             - px-5: Adjusted for the screen-safe width.
         */}
-        <div className="w-auto max-w-[94vw] flex items-center justify-center bg-white/[0.08] backdrop-blur-3xl pointer-events-auto
-                        border border-white/[0.15] rounded-full shadow-[0_20px_50px_rgba(0,0,0,0.5)] px-5 py-3.5">
+        <div className="w-auto max-w-[94vw] flex items-center justify-center bg-zinc-950/95 pointer-events-auto
+                        border border-white/10 rounded-full shadow-2xl px-5 py-3.5">
           
           {/* LOGO & BRAND */}
           <div className="flex items-center gap-2">
@@ -112,7 +112,7 @@ const MobileNavbar = () => {
             animate={{ opacity: 1, clipPath: 'circle(150% at 50% 0%)' }}
             exit={{ opacity: 0, clipPath: 'circle(0% at 50% 0%)' }}
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-            className="fixed inset-0 bg-black/98 backdrop-blur-3xl z-[9000] flex flex-col items-center justify-center"
+            className="fixed inset-0 bg-black z-[9000] flex flex-col items-center justify-center"
           >
             <div className="flex flex-col items-center gap-10">
               {navItems.map((item, i) => (

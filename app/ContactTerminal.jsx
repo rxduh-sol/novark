@@ -71,7 +71,7 @@ export default function ContactTerminal() {
   };
 
   return (
-    <section ref={sectionRef} id="contact" className="w-full min-h-[100vh] flex items-center justify-center px-[2.5vw] bg-transparent relative overflow-hidden pt-[15vh] lg:pt-[30vh] pb-[10vh] lg:pb-[15vh]">
+    <section ref={sectionRef} id="contact" className="w-full min-h-[100dvh] flex items-center justify-center px-[2.5vw] bg-transparent relative overflow-hidden pt-[15vh] lg:pt-[30vh] pb-[10vh] lg:pb-[15vh]">
 
       {/* 1. LAYER ONE: THE MESH GLOW (Floating) */}
       <motion.div
@@ -123,7 +123,7 @@ export default function ContactTerminal() {
               {/* PHONE BLOCK */}
               <motion.div
                 variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
-                className="w-full flex flex-col items-center border border-white/15 lg:items-start lg:border-none rounded-[2.5rem] lg:rounded-none p-8 lg:p-0 bg-white/5 lg:bg-transparent backdrop-blur-sm lg:backdrop-blur-none"
+                className="w-full flex flex-col items-center border border-white/15 lg:items-start lg:border-none rounded-[2.5rem] lg:rounded-none p-8 lg:p-0 bg-zinc-950/95 lg:bg-transparent md:backdrop-blur-sm lg:backdrop-blur-none"
               >
                 <div className="flex flex-col items-center lg:items-center lg:flex-row w-full gap-6 lg:gap-8 justify-center lg:justify-start">
                   <p className="hidden lg:block text-white/10 text-[clamp(1.5rem,4vw,5rem)] font-bold tracking-tighter uppercase leading-none" style={{ fontFamily: 'var(--font-horizon2)' }}>PHONE</p>
@@ -169,7 +169,7 @@ export default function ContactTerminal() {
               {/* EMAIL BLOCK */}
               <motion.div
                 variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
-                className="w-full flex flex-col items-center border border-white/15 lg:items-start lg:border-none rounded-[2.5rem] lg:rounded-none p-8 lg:p-0 bg-white/5 lg:bg-transparent backdrop-blur-sm lg:backdrop-blur-none"
+                className="w-full flex flex-col items-center border border-white/15 lg:items-start lg:border-none rounded-[2.5rem] lg:rounded-none p-8 lg:p-0 bg-zinc-950/95 lg:bg-transparent md:backdrop-blur-sm lg:backdrop-blur-none"
               >
                 <div className="flex flex-col items-center lg:items-center lg:flex-row w-full gap-6 lg:gap-8 justify-center lg:justify-start">
                   <p className="hidden lg:block text-white/10 text-[clamp(1.5rem,4vw,5rem)] font-bold tracking-tighter uppercase leading-none" style={{ fontFamily: 'var(--font-horizon2)' }}>EMAIL</p>
@@ -221,7 +221,7 @@ export default function ContactTerminal() {
             initial={{ opacity: 0, x: 50, scale: 0.95 }}
             whileInView={{ opacity: 1, x: 0, scale: 1 }}
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-            className="w-full max-w-[450px] lg:max-w-[35vw] bg-zinc-950/40 border border-white/10 backdrop-blur-2xl rounded-[3rem] p-8 lg:p-[2.5vw] shadow-[0_4vw_8vw_rgba(0,0,0,0.6)]"
+            className="w-full max-w-[450px] lg:max-w-[35vw] bg-zinc-950/95 md:bg-zinc-950/40 border border-white/10 md:backdrop-blur-2xl rounded-[3rem] p-8 lg:p-[2.5vw] shadow-[0_4vw_8vw_rgba(0,0,0,0.6)]"
           >
             <form ref={formRef} onSubmit={sendEmail} className="space-y-[4vh] relative z-10">
 
