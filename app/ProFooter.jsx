@@ -132,14 +132,14 @@ export default function ProFooter() {
 
         {/* SUBTEXT (BELOW DIRECTORY) */}
         <p className="text-white/40 text-lg font-medium leading-relaxed max-w-md" style={{ fontFamily: 'var(--font-geist-sans)' }}>
-          WE BUILD WEBSITES THAT GET YOU MORE CALLS AND CUSTOMERS. NO JARGON, JUST RESULTS FOR PLUMBERS, ROOFERS, AND LOCAL TRADES.
+          We design affordable but great websites that gets you more calls and customers.No Jargon. Just the best for Plumbers, Roofers, Bakeries and Local Trades.
         </p>
       </div>
 
       {/* BOTTOM SECTION: DISCLAIMER & COPYRIGHT */}
       <div className="w-full mx-auto mt-20 pt-10 border-t border-white/5 flex flex-col items-center justify-center gap-6">
         <div className="text-[10px] md:text-[12px] text-white/20 uppercase tracking-[0.2em] font-medium text-center max-w-2xl px-4 italic leading-loose">
-          Based in Abbeyfields, Colchester, Essex. All services provided by Novark Agency. We are dedicated to delivering results for local trades through performanceled digital solutions.
+          Based in Abbeyfields, Colchester, Essex. All services provided by Novark Agency.
         </div>
         <div className="text-[14px] text-white/30 uppercase tracking-[0.5em] font-black text-center">
           © {new Date().getFullYear()} NOVARK. ALL RIGHTS RESERVED.

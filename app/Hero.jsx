@@ -121,7 +121,7 @@ export default function Hero() {
                   whileHover={{ scale: 1.05, y: -6 }} whileTap={{ scale: 0.95 }}
                   className="font-horizon inline-flex min-h-[clamp(65px,8vh,84px)] items-center justify-center rounded-full bg-white px-[clamp(2rem,3.5vw,4rem)] py-2 text-[clamp(1.2rem,1.5vw,1.7rem)] uppercase text-black shadow-xl shadow-white/10"
                 >
-                  GET MORE CALLS
+                  GET MORE CALLS <span className="sr-only">for your Colchester local trade business</span>
                 </motion.button>
                 <motion.button 
                   onClick={(e) => {
@@ -130,6 +130,7 @@ export default function Hero() {
                     if (el) el.scrollIntoView({ behavior: 'smooth' });
                   }}
                   whileHover={{ scale: 1.05, y: -6 }} whileTap={{ scale: 0.95 }}
+                  aria-label="View our portfolio of web design for Colchester tradesmen and local businesses"
                   className="font-horizon inline-flex min-h-[clamp(65px,8vh,84px)] items-center justify-center rounded-full bg-[#0a0a0a] border border-white/5 px-[clamp(2rem,3.5vw,4rem)] py-2 text-[clamp(1.2rem,1.5vw,1.7rem)] uppercase text-white transition-colors duration-300 hover:bg-[#1a1a1a] shadow-xl"
                 >
                   VIEW WORK
@@ -275,7 +276,7 @@ export default function Hero() {
               whileTap={{ scale: 0.95 }}
               className="font-horizon h-[64px] flex items-center justify-center rounded-full bg-white text-[1.2rem] uppercase text-black shadow-lg shadow-white/10"
             >
-              GET MORE CALLS
+              GET MORE CALLS <span className="sr-only">for your Colchester custom web design</span>
             </motion.button>
             <motion.button 
               onClick={(e) => {
@@ -284,6 +285,7 @@ export default function Hero() {
                 if (el) el.scrollIntoView({ behavior: 'smooth' });
               }}
               whileTap={{ scale: 0.95 }}
+              aria-label="View our portfolio of web design for Colchester tradesmen and local businesses"
               className="font-horizon h-[64px] flex items-center justify-center rounded-full bg-[#0a0a0a] border border-white/5 text-[1.2rem] uppercase text-white"
             >
               VIEW WORK

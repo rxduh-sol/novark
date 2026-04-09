@@ -153,7 +153,11 @@ export default function ContactTerminal() {
                         variants={iconVariants}
                         className="lg:absolute lg:inset-0 flex items-center justify-center"
                       >
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5 lg:w-7 lg:h-7 opacity-70 lg:opacity-100"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" /></svg>
+                        <svg role="img" aria-labelledby="svg-phone-title svg-phone-desc" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5 lg:w-7 lg:h-7 opacity-70 lg:opacity-100">
+                          <title id="svg-phone-title">Call For Web Design</title>
+                          <desc id="svg-phone-desc">Call us to discuss web design services for your local Colchester business or trade.</desc>
+                          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                        </svg>
                       </motion.div>
                     </div>
                   </motion.a>
@@ -199,7 +203,11 @@ export default function ContactTerminal() {
                         variants={iconVariants}
                         className="lg:absolute lg:inset-0 flex items-center justify-center"
                       >
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5 lg:w-7 lg:h-7 opacity-70 lg:opacity-100"><rect width="20" height="16" x="2" y="4" rx="2" /><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" /></svg>
+                        <svg role="img" aria-labelledby="svg-email-title svg-email-desc" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5 lg:w-7 lg:h-7 opacity-70 lg:opacity-100">
+                          <title id="svg-email-title">Email For Web Design</title>
+                          <desc id="svg-email-desc">Email us to discuss web design services for your local Colchester business or trade.</desc>
+                          <rect width="20" height="16" x="2" y="4" rx="2" /><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+                        </svg>
                       </motion.div>
                     </div>
                   </motion.a>
@@ -292,7 +300,7 @@ function MagneticButton({ status }) {
       className="w-full py-5 bg-white text-black font-horizon font-bold uppercase tracking-wider text-xl rounded-full shadow-[0_0_20px_rgba(255,255,255,0.2)] hover:shadow-[0_0_40px_rgba(255,255,255,0.5)] transition-shadow duration-300 relative group overflow-hidden cursor-pointer"
     >
       <span className="relative z-10 transition-colors duration-300">
-        {status === "SENDING" ? "SENDING..." : "GET STARTED"}
+        {status === "SENDING" ? "SENDING..." : "GET STARTED"} <span className="sr-only">with your Colchester local business web design</span>
       </span>
     </motion.button>
   );

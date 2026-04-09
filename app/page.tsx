@@ -7,11 +7,15 @@ import WorkCarousel from './WorkCarousel';
 import ContactTerminal from './ContactTerminal';
 import LoadingScreen from './LoadingScreen';
 import ProFooter from './ProFooter'; 
+import JsonLd from '../components/JsonLd';
+
+export const revalidate = 86400; // 24 hours to trigger freshness loophole
 
 export default function Page() {
   return (
     <main className="relative w-full min-h-screen bg-transparent overflow-x-hidden scroll-smooth">
       <LoadingScreen />
+      <JsonLd />
 
       <div className="opacity-100">
         
